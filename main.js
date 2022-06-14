@@ -113,7 +113,7 @@ music = document.querySelector("#musicplay");
 musicEatingFodd = document.querySelector("#eatingfood");
 loose = document.querySelector("#loose");
 
-const follow = () => {
+const follow = (positionEnemyX, positionEnemyY, enemy) => {
   let idInterval = setInterval(() => {
     if (
       Math.abs(positionEnemyY - positionY) > 25 ||
@@ -146,102 +146,7 @@ const follow = () => {
   }, 15);
 };
 
-const follow2 = () => {
-  let idInterval2 = setInterval(() => {
-    if (
-      Math.abs(positionEnemy2Y - positionY) > 25 ||
-      Math.abs(positionEnemy2X - positionX) > 25
-    ) {
-      let differenceX = positionEnemy2X - positionX;
-      let differenceY = positionEnemy2Y - positionY;
-
-      if (differenceX < 0) {
-        positionEnemy2X += 1;
-        enemy2.style.left = positionEnemy2X + "px";
-      } else {
-        positionEnemy2X -= 1;
-        enemy2.style.left = positionEnemy2X + "px";
-      }
-      if (differenceY < 0) {
-        positionEnemy2Y += 1;
-        enemy2.style.top = positionEnemy2Y + "px";
-      } else {
-        positionEnemy2Y -= 1;
-        enemy2.style.top = positionEnemy2Y + "px";
-      }
-    } else {
-      clearInterval(idInterval2);
-      looseFunction();
-      alert("Game Over");
-      location.reload();
-    }
-  }, 15);
-};
-const follow3 = () => {
-  let idInterval3 = setInterval(() => {
-    if (
-      Math.abs(positionEnemy3Y - positionY) > 25 ||
-      Math.abs(positionEnemy3X - positionX) > 25
-    ) {
-      let differenceX = positionEnemy3X - positionX;
-      let differenceY = positionEnemy3Y - positionY;
-
-      if (differenceX < 0) {
-        positionEnemy3X += 1;
-        enemy3.style.left = positionEnemy3X + "px";
-      } else {
-        positionEnemy3X -= 1;
-        enemy3.style.left = positionEnemy3X + "px";
-      }
-      if (differenceY < 0) {
-        positionEnemy3Y += 1;
-        enemy3.style.top = positionEnemy3Y + "px";
-      } else {
-        positionEnemy3Y -= 1;
-        enemy3.style.top = positionEnemy3Y + "px";
-      }
-    } else {
-      clearInterval(idInterval3);
-      looseFunction();
-      alert("Game Over");
-      location.reload();
-    }
-  }, 15);
-};
-
-const follow4 = () => {
-  let idInterval = setInterval(() => {
-    if (
-      Math.abs(positionEnemy4Y - positionY) > 25 ||
-      Math.abs(positionEnemy4X - positionX) > 25
-    ) {
-      let differenceX = positionEnemy4X - positionX;
-      let differenceY = positionEnemy4Y - positionY;
-
-      if (differenceX < 0) {
-        positionEnemy4X += 1;
-        enemy4.style.left = positionEnemy4X + "px";
-      } else {
-        positionEnemy4X -= 1;
-        enemy4.style.left = positionEnemy4X + "px";
-      }
-      if (differenceY < 0) {
-        positionEnemy4Y += 1;
-        enemy4.style.top = positionEnemy4Y + "px";
-      } else {
-        positionEnemy4Y -= 1;
-        enemy4.style.top = positionEnemy4Y + "px";
-      }
-    } else {
-      clearInterval(idInterval);
-      looseFunction();
-      alert("Game Over");
-      location.reload();
-    }
-  }, 15);
-};
-
-follow();
-follow2();
-follow3();
-follow4();
+follow(positionEnemyX, positionEnemyY, enemy);
+follow(positionEnemy2X, positionEnemy2Y, enemy2);
+follow(positionEnemy3X, positionEnemy3Y, enemy3);
+follow(positionEnemy4X, positionEnemy4Y, enemy4);
