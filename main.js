@@ -35,31 +35,31 @@ window.addEventListener("keydown", (e) => {
   }
 
   if (Object.keys(foods).length === 0) {
-    alert("You Win!");
+    alert("You Won!");
     location.reload();
   }
   switch (e.keyCode) {
     case 38:
-      if (positionY >= 30) {
+      if (positionY >= 8) {
         positionY -= stepMoving;
         object.style.top = positionY + "px";
       }
       break;
     case 40:
-      if (positionY <= window.innerHeight - 30) {
+      if (positionY <= window.innerHeight - 80) {
         positionY += stepMoving;
         object.style.top = positionY + "px";
       }
 
       break;
     case 37:
-      if (positionX >= 30) {
+      if (positionX >= 8) {
         positionX -= stepMoving;
         object.style.left = positionX + "px";
       }
       break;
     case 39:
-      if (positionX <= window.innerWidth - 30) {
+      if (positionX <= window.innerWidth - 80) {
         positionX += stepMoving;
         object.style.left = positionX + "px";
       }
