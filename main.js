@@ -16,7 +16,7 @@ let positionEnemyX = enemy.getBoundingClientRect().x,
   positionEnemy4X = enemy4.getBoundingClientRect().x,
   positionEnemy4Y = enemy4.getBoundingClientRect().y;
 
-let stepMoving = 20;
+let stepMoving = 10;
 
 let foods = {};
 
@@ -64,7 +64,7 @@ window.addEventListener("keydown", (e) => {
 const buildFoods = function () {
   let x, y;
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 40; i++) {
     x = Math.floor(Math.random() * (window.innerWidth - 100)) + 1;
     y = Math.floor(Math.random() * (window.innerHeight - 100)) + 1;
     boardGame.innerHTML += `<div id="food${i}" class='food' style="background-color:rgb(${
@@ -110,7 +110,7 @@ const follow = () => {
       clearInterval(idInterval);
       alert("you are loose");
     }
-  }, 20);
+  }, 15);
 };
 
 const follow2 = () => {
@@ -140,7 +140,7 @@ const follow2 = () => {
       clearInterval(idInterval2);
       alert("you are loose");
     }
-  }, 20);
+  }, 15);
 };
 const follow3 = () => {
   let idInterval3 = setInterval(() => {
@@ -169,7 +169,7 @@ const follow3 = () => {
       clearInterval(idInterval3);
       alert("you are loose3");
     }
-  }, 20);
+  }, 15);
 };
 
 const follow4 = () => {
@@ -199,7 +199,7 @@ const follow4 = () => {
       clearInterval(idInterval);
       alert("you are loose");
     }
-  }, 20);
+  }, 15);
 };
 
 follow();

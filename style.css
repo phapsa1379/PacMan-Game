@@ -126,8 +126,11 @@ html {
 }
 #enemy3 {
   background-color: #e056fd;
-  left: 50rem !important;
-  top: 10rem !important;
+  right: 100rem !important;
+  bottom: 80rem !important;
+  /* 
+  right: 60rem !important;
+  bottom: 20rem !important; */
 }
 #enemy4 {
   background-color: green;
