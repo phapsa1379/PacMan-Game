@@ -1,6 +1,8 @@
 let object = document.querySelector(".object");
 let enemy = document.querySelector(".enemy");
 let enemy2 = document.querySelector("#enemy2");
+let enemy3 = document.querySelector("#enemy3");
+let enemy4 = document.querySelector("#enemy4");
 const boardGame = document.querySelector(".board-game");
 let positionX = object.getBoundingClientRect().x,
   positionY = object.getBoundingClientRect().y;
@@ -8,15 +10,15 @@ let positionX = object.getBoundingClientRect().x,
 let positionEnemyX = enemy.getBoundingClientRect().x,
   positionEnemyY = enemy.getBoundingClientRect().y,
   positionEnemy2X = enemy2.getBoundingClientRect().x,
-  positionEnemy2Y = enemy2.getBoundingClientRect().y;
+  positionEnemy2Y = enemy2.getBoundingClientRect().y,
+  positionEnemy3X = enemy3.getBoundingClientRect().x,
+  positionEnemy3Y = enemy3.getBoundingClientRect().y,
+  positionEnemy4X = enemy4.getBoundingClientRect().x,
+  positionEnemy4Y = enemy4.getBoundingClientRect().y;
 
 let stepMoving = 20;
 
 let foods = {};
-
-const setDelay = (time) => {
-  setTimeout(() => {}, time * 1000);
-};
 
 window.addEventListener("keydown", (e) => {
   //follow();
@@ -78,10 +80,8 @@ buildFoods();
 object = document.querySelector(".object");
 enemy = document.querySelector(".enemy");
 enemy2 = document.querySelector("#enemy2");
-// enemy.style.top = enemy.getBoundingClientRect().y;
-// enemy.style.left = enemy.getBoundingClientRect().x;
-// object.style.left = object.getBoundingClientRect().x;
-// object.style.top = object.getBoundingClientRect().y;
+enemy3 = document.querySelector("#enemy3");
+enemy4 = document.querySelector("#enemy4");
 
 const follow = () => {
   let idInterval = setInterval(() => {
@@ -89,8 +89,6 @@ const follow = () => {
       Math.abs(positionEnemyY - positionY) > 25 ||
       Math.abs(positionEnemyX - positionX) > 25
     ) {
-      // setTimeout(() => {
-      console.log("yook");
       let differenceX = positionEnemyX - positionX;
       let differenceY = positionEnemyY - positionY;
 
@@ -144,6 +142,67 @@ const follow2 = () => {
     }
   }, 20);
 };
+const follow3 = () => {
+  let idInterval3 = setInterval(() => {
+    if (
+      Math.abs(positionEnemy3Y - positionY) > 25 ||
+      Math.abs(positionEnemy3X - positionX) > 25
+    ) {
+      let differenceX = positionEnemy3X - positionX;
+      let differenceY = positionEnemy3Y - positionY;
+
+      if (differenceX < 0) {
+        positionEnemy3X += 1;
+        enemy3.style.left = positionEnemy3X + "px";
+      } else {
+        positionEnemy3X -= 1;
+        enemy3.style.left = positionEnemy3X + "px";
+      }
+      if (differenceY < 0) {
+        positionEnemy3Y += 1;
+        enemy3.style.top = positionEnemy3Y + "px";
+      } else {
+        positionEnemy3Y -= 1;
+        enemy3.style.top = positionEnemy3Y + "px";
+      }
+    } else {
+      clearInterval(idInterval3);
+      alert("you are loose3");
+    }
+  }, 20);
+};
+
+const follow4 = () => {
+  let idInterval = setInterval(() => {
+    if (
+      Math.abs(positionEnemy4Y - positionY) > 25 ||
+      Math.abs(positionEnemy4X - positionX) > 25
+    ) {
+      let differenceX = positionEnemy4X - positionX;
+      let differenceY = positionEnemy4Y - positionY;
+
+      if (differenceX < 0) {
+        positionEnemy4X += 1;
+        enemy4.style.left = positionEnemy4X + "px";
+      } else {
+        positionEnemy4X -= 1;
+        enemy4.style.left = positionEnemy4X + "px";
+      }
+      if (differenceY < 0) {
+        positionEnemy4Y += 1;
+        enemy4.style.top = positionEnemy4Y + "px";
+      } else {
+        positionEnemy4Y -= 1;
+        enemy4.style.top = positionEnemy4Y + "px";
+      }
+    } else {
+      clearInterval(idInterval);
+      alert("you are loose");
+    }
+  }, 20);
+};
 
 follow();
 follow2();
+follow3();
+follow4();
