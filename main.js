@@ -33,7 +33,8 @@ let foodNumber = 40,
 
 const looseFunction = () => {
   loose.play();
-
+  object.style.display = "none";
+  alert("Game Over");
   setTimeout(() => {
     loose.pause();
   }, 1000);
@@ -139,8 +140,6 @@ const follow = (positionEnemyX, positionEnemyY, enemy) => {
     } else {
       clearInterval(idInterval);
       looseFunction();
-      alert("Game Over");
-
       location.reload();
     }
   }, 15);
