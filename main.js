@@ -19,18 +19,24 @@ let positionEnemyX = enemy.getBoundingClientRect().x,
 let stepMoving = 10;
 
 let foods = {};
+let foodNumber = 40,
+  foodCounter = 0;
 
 window.addEventListener("keydown", (e) => {
   //follow();
   for (let food in foods) {
     if (
-      positionX >= foods[food][0] - 35 &&
-      positionX <= foods[food][0] + 35 &&
-      positionY >= foods[food][1] - 35 &&
-      positionY <= foods[food][1] + 35
+      Math.abs(positionX - foods[food][0]) <= 35 &&
+      Math.abs(positionY - foods[food][1]) <= 35
     ) {
       document.getElementById(food).style.display = "none";
+      delete foods[food];
     }
+  }
+
+  if (Object.keys(foods).length === 0) {
+    alert("You Win!");
+    location.reload();
   }
   switch (e.keyCode) {
     case 38:
@@ -64,7 +70,7 @@ window.addEventListener("keydown", (e) => {
 const buildFoods = function () {
   let x, y;
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < foodNumber; i++) {
     x = Math.floor(Math.random() * (window.innerWidth - 100)) + 1;
     y = Math.floor(Math.random() * (window.innerHeight - 100)) + 1;
     boardGame.innerHTML += `<div id="food${i}" class='food' style="background-color:rgb(${
@@ -108,7 +114,8 @@ const follow = () => {
       }
     } else {
       clearInterval(idInterval);
-      alert("you are loose");
+      alert("Game Over");
+      location.reload();
     }
   }, 15);
 };
@@ -138,7 +145,8 @@ const follow2 = () => {
       }
     } else {
       clearInterval(idInterval2);
-      alert("you are loose");
+      alert("Game Over");
+      location.reload();
     }
   }, 15);
 };
@@ -167,7 +175,8 @@ const follow3 = () => {
       }
     } else {
       clearInterval(idInterval3);
-      alert("you are loose3");
+      alert("Game Over");
+      location.reload();
     }
   }, 15);
 };
@@ -197,7 +206,8 @@ const follow4 = () => {
       }
     } else {
       clearInterval(idInterval);
-      alert("you are loose");
+      alert("Game Over");
+      location.reload();
     }
   }, 15);
 };
