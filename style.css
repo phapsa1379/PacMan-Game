@@ -90,6 +90,7 @@ html {
   height: 5rem;
   width: 5rem;
   position: absolute;
+  margin: 1rem;
 }
 #enemy1 {
   left: 50rem;

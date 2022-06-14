@@ -1,13 +1,16 @@
 let object = document.querySelector(".object");
 let enemy = document.querySelector(".enemy");
+let enemy2 = document.querySelector("#enemy2");
 const boardGame = document.querySelector(".board-game");
 let positionX = object.getBoundingClientRect().x,
   positionY = object.getBoundingClientRect().y;
 
 let positionEnemyX = enemy.getBoundingClientRect().x,
-  positionEnemyY = enemy.getBoundingClientRect().y;
+  positionEnemyY = enemy.getBoundingClientRect().y,
+  positionEnemy2X = enemy2.getBoundingClientRect().x,
+  positionEnemy2Y = enemy2.getBoundingClientRect().y;
 
-let stepMoving = 40;
+let stepMoving = 20;
 
 let foods = {};
 
@@ -74,6 +77,7 @@ const buildFoods = function () {
 buildFoods();
 object = document.querySelector(".object");
 enemy = document.querySelector(".enemy");
+enemy2 = document.querySelector("#enemy2");
 // enemy.style.top = enemy.getBoundingClientRect().y;
 // enemy.style.left = enemy.getBoundingClientRect().x;
 // object.style.left = object.getBoundingClientRect().x;
@@ -81,7 +85,10 @@ enemy = document.querySelector(".enemy");
 
 const follow = () => {
   let idInterval = setInterval(() => {
-    if (positionEnemyY !== positionY || positionEnemyX !== positionX) {
+    if (
+      Math.abs(positionEnemyY - positionY) > 25 ||
+      Math.abs(positionEnemyX - positionX) > 25
+    ) {
       // setTimeout(() => {
       console.log("yook");
       let differenceX = positionEnemyX - positionX;
@@ -107,4 +114,36 @@ const follow = () => {
     }
   }, 20);
 };
+
+const follow2 = () => {
+  let idInterval2 = setInterval(() => {
+    if (
+      Math.abs(positionEnemy2Y - positionY) > 25 ||
+      Math.abs(positionEnemy2X - positionX) > 25
+    ) {
+      let differenceX = positionEnemy2X - positionX;
+      let differenceY = positionEnemy2Y - positionY;
+
+      if (differenceX < 0) {
+        positionEnemy2X += 1;
+        enemy2.style.left = positionEnemy2X + "px";
+      } else {
+        positionEnemy2X -= 1;
+        enemy2.style.left = positionEnemy2X + "px";
+      }
+      if (differenceY < 0) {
+        positionEnemy2Y += 1;
+        enemy2.style.top = positionEnemy2Y + "px";
+      } else {
+        positionEnemy2Y -= 1;
+        enemy2.style.top = positionEnemy2Y + "px";
+      }
+    } else {
+      clearInterval(idInterval2);
+      alert("you are loose");
+    }
+  }, 20);
+};
+
 follow();
+follow2();
