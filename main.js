@@ -1,3 +1,5 @@
+confirm("Are you ready to start?");
+
 let object = document.querySelector(".object");
 let enemy = document.querySelector(".enemy");
 let enemy2 = document.querySelector("#enemy2");
@@ -18,9 +20,24 @@ let positionEnemyX = enemy.getBoundingClientRect().x,
 
 let stepMoving = 10;
 
+let music = document.querySelector("#musicplay");
+document.documentElement.addEventListener("keydown", (e) => {
+  if ((e.keyCode = 13)) music.play();
+});
+let musicEatingFodd = document.querySelector("#eatingfood");
+let loose = document.querySelector("#loose");
+
 let foods = {};
 let foodNumber = 40,
   foodCounter = 0;
+
+const looseFunction = () => {
+  loose.play();
+
+  setTimeout(() => {
+    loose.pause();
+  }, 1000);
+};
 
 window.addEventListener("keydown", (e) => {
   //follow();
@@ -30,7 +47,11 @@ window.addEventListener("keydown", (e) => {
       Math.abs(positionY - foods[food][1]) <= 35
     ) {
       document.getElementById(food).style.display = "none";
+      musicEatingFodd.play();
       delete foods[food];
+      setTimeout(() => {
+        musicEatingFodd.pause();
+      }, 1000);
     }
   }
 
@@ -88,6 +109,9 @@ enemy = document.querySelector(".enemy");
 enemy2 = document.querySelector("#enemy2");
 enemy3 = document.querySelector("#enemy3");
 enemy4 = document.querySelector("#enemy4");
+music = document.querySelector("#musicplay");
+musicEatingFodd = document.querySelector("#eatingfood");
+loose = document.querySelector("#loose");
 
 const follow = () => {
   let idInterval = setInterval(() => {
@@ -114,7 +138,9 @@ const follow = () => {
       }
     } else {
       clearInterval(idInterval);
+      looseFunction();
       alert("Game Over");
+
       location.reload();
     }
   }, 15);
@@ -145,6 +171,7 @@ const follow2 = () => {
       }
     } else {
       clearInterval(idInterval2);
+      looseFunction();
       alert("Game Over");
       location.reload();
     }
@@ -175,6 +202,7 @@ const follow3 = () => {
       }
     } else {
       clearInterval(idInterval3);
+      looseFunction();
       alert("Game Over");
       location.reload();
     }
@@ -206,6 +234,7 @@ const follow4 = () => {
       }
     } else {
       clearInterval(idInterval);
+      looseFunction();
       alert("Game Over");
       location.reload();
     }
